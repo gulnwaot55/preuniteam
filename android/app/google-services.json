@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "430923831261",
+    "firebase_url": "https://flutter-getx-api-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "flutter-getx-api",
+    "storage_bucket": "flutter-getx-api.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430923831261:android:f19cd2e2562b1df08c4834",
+        "android_client_info": {
+          "package_name": "com.example.netflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430923831261-5engmst26re6qde6995b1vqef4ebrab5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIk6Z1szawDDVZfF4MMHg808m9qZ5rxeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430923831261-5engmst26re6qde6995b1vqef4ebrab5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
