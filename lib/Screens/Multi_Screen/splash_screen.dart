@@ -25,7 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
-  getToken() async { //ฝากแก้ชุดนี้ด้วยครับ 555
+  getToken() async {
+    //ดู Code ชุดนี้ช่วยหน่อยครับ 555
     final db = await SharedPreferences.getInstance();
     String token = db.getString("token").toString();
     AppController.setLogin();
