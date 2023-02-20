@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -54,6 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   paddingUtilHeight(height * 0.03),
                   appButtonLogin(context, true, () {
+                    
                     try {
                       EasyLoading.show(status: "Loading...");
                       FirebaseAuth.instance

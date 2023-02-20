@@ -1,5 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/Screens/Main_Screen/home_screen.dart';
 import 'package:netflix/Screens/Main_Screen/login_screen.dart';

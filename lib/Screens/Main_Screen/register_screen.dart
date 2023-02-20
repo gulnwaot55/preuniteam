@@ -63,6 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   paddingUtilHeight(height * 0.02),
                   appButtonRegister(context, true, () {
+                    
                     RegisterService.register(_usernameController.text,
                         _emailController.text, _passwordController.text);
                   }),
