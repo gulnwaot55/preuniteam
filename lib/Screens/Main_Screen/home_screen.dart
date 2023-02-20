@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:netflix/Screens/Main_Screen/login_screen.dart';
 import 'package:netflix/Screens/Multi_Screen/navbar_screen.dart';
 
+import '../../Controllers/app_controller.dart';
 import '../../Widgets/app_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,8 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text("Home Screen"),
             appButtonLogOut(context, true, () {
-              FirebaseAuth.instance.signOut();
-              Get.offAll(()=> LoginScreen());
+              AppController.setlogOut();
             }),
           ],
         ),
@@ -33,3 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+
+// Func Check Token // open //////////////////////////////////////
+// FirebaseAuth.instance.currentUser!
+//                       .getIdToken()
+//                       .then((tokenID) {
+//                     print("Token ID : $tokenID");
+//                   });
+/////////////////////////////////////////////////////////////////// close

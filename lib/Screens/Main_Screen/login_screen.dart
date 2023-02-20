@@ -7,6 +7,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:netflix/Screens/Main_Screen/home_screen.dart';
+import 'package:netflix/Services/Authen_Service/login_service.dart';
 import 'package:netflix/Utils/paddingUtil.dart';
 import 'package:netflix/Widgets/app_button.dart';
 import 'package:netflix/Widgets/app_form.dart';
@@ -55,37 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   paddingUtilHeight(height * 0.03),
                   appButtonLogin(context, true, () {
-                    
-                    try {
-                      EasyLoading.show(status: "Loading...");
-                      FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
-                              email: _emailController.text,
-                              password: _passwordController.text)
-                          .then((value) {
-                        Get.offAll(() => const HomeScreen());
-                        print("Login Success");
-                        EasyLoading.dismiss();
-                      }).onError((error, stackTrace) {
-                        Get.snackbar(
-                          "Warning",
-                          "กรุณากรอกข้อมูลให้ถูกต้อง!",
-                          overlayBlur: 2,
-                          duration: Duration(milliseconds: 1500),
-                          icon: Icon(
-                            Icons.warning,
-                            color: Colors.yellow,
-                          ),
-                          colorText: Colors.white,
-                          backgroundColor: Colors.black,
-                        );
-                        print("Error Login 1 : ${error.toString()}");
-                        EasyLoading.dismiss();
-                      });
-                    } catch (e) {
-                      print("Error Login 2 : ${e.toString()}");
-                      EasyLoading.dismiss();
-                    }
+                    LoginService.loginController(
+                        _emailController.text, _passwordController.text);
                   }),
                   paddingUtilHeight(height * 0.02),
                   registerOption(),
