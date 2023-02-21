@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_brace_in_string_interps, avoid_print
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -24,17 +26,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   getToken() async {
-    //ดู Code ชุดนี้ช่วยหน่อยครับ 555
     final db = await SharedPreferences.getInstance();
     String token = db.getString("token").toString();
     AppController.setLogin();
     print("Check Get Token Splash : ${token}");
-    Timer(Duration(seconds: 2), () {
-      if (token.isNotEmpty) {
-        Get.offAll(() => HomeScreen());
-      } else if (token == null && token.isEmpty) {
-        Get.offAll(() => LoginScreen());
-      }
+    Timer(const Duration(seconds: 2), () {
+       token == 'null' || token.isEmpty
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(() => const HomeScreen());
     });
   }
 
