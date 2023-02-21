@@ -18,15 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomNavbarScreen(),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Home Screen"),
-            appButtonLogOut(context, true, () {
-              AppController.setlogOut();
-            }),
-          ],
-        ),
       ),
     );
   }

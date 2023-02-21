@@ -338,7 +338,7 @@ class BottomNavbarScreenState extends State<BottomNavbarScreen>
                                                   ? fifthIconSize.value
                                                   : 0,
                               color: index == currentIndex
-                                  ? Color.fromARGB(255, 3, 158, 248)
+                                  ? Colors.blueAccent
                                   : Colors.black26,
                             ),
                           ),
