@@ -18,6 +18,7 @@ class RegisterService {
     String username,
     String email,
     String password,
+    String imageProfile,
   ) async {
     final db = await SharedPreferences.getInstance();
     try {
@@ -42,6 +43,7 @@ class RegisterService {
           "email": email,
           "password": password,
           "createTime": time,
+          "imageProfile" : imageProfile,
         });
 
         print('Update User : ${users.toString()}');
