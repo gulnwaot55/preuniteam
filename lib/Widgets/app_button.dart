@@ -15,7 +15,7 @@ Container appButtonLogin(BuildContext context, bool isLogin, Function onTap) {
       onPressed: () {
         onTap();
       },
-      child: Text(
+      child:  Text(
         isLogin ? "Login" : "Register",
         style: TextStyle(
           color: Colors.white,
@@ -45,7 +45,7 @@ Container appButtonRegister(BuildContext context, bool isLogin, Function onTap) 
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 50,
-    margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
+    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(90),
     ),
