@@ -17,14 +17,14 @@ import 'package:netflix/Widgets/avatar_profile.dart';
 import '../../Widgets/app_button.dart';
 import '../Multi_Screen/navbar_screen.dart';
 
-class Screen5 extends StatefulWidget {
-  const Screen5({super.key});
+class ProfilesScreen extends StatefulWidget {
+  const ProfilesScreen({super.key});
 
   @override
-  State<Screen5> createState() => _Screen5State();
+  State<ProfilesScreen> createState() => _ProfilesScreenState();
 }
 
-class _Screen5State extends State<Screen5> {
+class _ProfilesScreenState extends State<ProfilesScreen> {
   String username = "";
   String imageProfile = "";
   String emailUser = "";

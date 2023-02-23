@@ -15,14 +15,14 @@ import 'package:netflix/Utils/paddingUtil.dart';
 import '../../Services/Upload_Service/upload_feed_service.dart';
 import '../Multi_Screen/navbar_screen.dart';
 
-class Screen3 extends StatefulWidget {
-  const Screen3({super.key});
+class UploadsScreen extends StatefulWidget {
+  const UploadsScreen({super.key});
 
   @override
-  State<Screen3> createState() => _Screen3State();
+  State<UploadsScreen> createState() => _UploadsScreenState();
 }
 
-class _Screen3State extends State<Screen3> {
+class _UploadsScreenState extends State<UploadsScreen> {
   @override
   void initState() {
     getProfile();

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:netflix/Screens/Main_Screen/chats_screen.dart';
+import 'package:netflix/Screens/Main_Screen/feeds_screen.dart';
+import 'package:netflix/Screens/Main_Screen/notification_screen.dart';
+import 'package:netflix/Screens/Main_Screen/profile_screen.dart';
+import 'package:netflix/Screens/Main_Screen/upload_screen.dart';
 
-import '../Main_Screen/s1.dart';
-import '../Main_Screen/s2.dart';
-import '../Main_Screen/s3.dart';
-import '../Main_Screen/s4.dart';
-import '../Main_Screen/s5.dart';
+
 
 class BottomNavbarScreen extends StatefulWidget {
+  const BottomNavbarScreen({super.key});
+
   @override
   BottomNavbarScreenState createState() =>
       BottomNavbarScreenState();
@@ -58,11 +61,11 @@ class BottomNavbarScreenState extends State<BottomNavbarScreen>
   ];
 
   List<Widget> screens = [
-    Screen1(),
-    Screen2(),
-    Screen3(),
-    Screen4(),
-    Screen5(),
+    const FeedsScreen(),
+    const ChatsScreen(),
+    const UploadsScreen(),
+    const NotificationScreen(),
+    const ProfilesScreen(),
   ];
 
   int pageIndex = 0;

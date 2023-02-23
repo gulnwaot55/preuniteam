@@ -4,14 +4,14 @@ import 'package:netflix/Screens/Multi_Screen/header_screen.dart';
 
 import '../../Services/ReadData_Service/read_feeds_service.dart';
 
-class Screen1 extends StatefulWidget {
-  const Screen1({super.key});
+class FeedsScreen extends StatefulWidget {
+  const FeedsScreen({super.key});
 
   @override
-  State<Screen1> createState() => _Screen1State();
+  State<FeedsScreen> createState() => _FeedsScreenState();
 }
 
-class _Screen1State extends State<Screen1> {
+class _FeedsScreenState extends State<FeedsScreen> {
   List<String> docFeed = [];
 
   Future getDocFeed() async {

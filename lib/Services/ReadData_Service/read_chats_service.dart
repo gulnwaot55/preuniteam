@@ -17,6 +17,8 @@ class ReadChatsService extends StatefulWidget {
 
 class _ReadChatsServiceState extends State<ReadChatsService> {
 
+  String myUid = FirebaseAuth.instance.currentUser!.uid.toString();
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -29,11 +31,17 @@ class _ReadChatsServiceState extends State<ReadChatsService> {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
 
-          return MessageBubble(
+          return myUid == data["uid"] ? MessageBubble(
             text: data["message"],
             color: Color(0xFF1B97F3),
             tail: false,
             textStyle: TextStyle(color: Colors.white, fontSize: 16),
+          ) : MessageBubble(
+            text: data["message"],
+            color: Color(0xFFE8E8EE),
+            tail: false,
+            isSender: false,
+            textStyle: TextStyle(color: Colors.black, fontSize: 16),
           );
         }
         if (snapshot.connectionState == ConnectionState.none) {

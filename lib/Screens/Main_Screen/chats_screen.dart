@@ -9,14 +9,14 @@ import 'package:netflix/Utils/paddingUtil.dart';
 
 import '../../Utils/message_barUtil.dart';
 
-class Screen2 extends StatefulWidget {
-  const Screen2({super.key});
+class ChatsScreen extends StatefulWidget {
+  const ChatsScreen({super.key});
 
   @override
-  State<Screen2> createState() => _Screen2State();
+  State<ChatsScreen> createState() => _ChatsScreenState();
 }
 
-class _Screen2State extends State<Screen2> {
+class _ChatsScreenState extends State<ChatsScreen> {
 
   @override
   void initState() {
