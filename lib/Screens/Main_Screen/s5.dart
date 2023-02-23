@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix/Services/ReadData_Service/firebase_profile_service.dart';
+import 'package:netflix/Screens/Multi_Screen/header_screen.dart';
+import 'package:netflix/Utils/paddingUtil.dart';
 import 'package:netflix/Widgets/avatar_profile.dart';
-
-import '../../Controllers/app_controller.dart';
 import '../../Widgets/app_button.dart';
 
 class Screen5 extends StatefulWidget {
@@ -40,35 +39,37 @@ class _Screen5State extends State<Screen5> {
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 70, left: 50, right: 50),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                imageProfile.isNotEmpty
-                    ? Expanded(
-                        child: avatarImageProfile(
-                          context,
-                          imageProfile,
-                          150,
-                          150,
-                        ),
-                      )
-                    : Container(
-                        child: CircularProgressIndicator(
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                username.isNotEmpty ? Text(username) : Text("ไม่พบ Username"),
-                emailUser.isNotEmpty ? Text(emailUser) : Text("ไม่พบ Email"),
-                appButtonLogOut(context, true, () {
-                  AppController.setlogOut();
-                }),
-              ],
+            padding: const EdgeInsets.only(
+              bottom: 70,
             ),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+              username.isNotEmpty ? headerScreen(username) : headerScreen(""),
+              paddingUtilHeight(h * 0.02),
+              imageProfile.isNotEmpty
+                  ? avatarImageProfile(
+                      context,
+                      imageProfile,
+                      150,
+                      150,
+                    )
+                  : Container(
+                      child: CircularProgressIndicator(
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+              paddingUtilHeight(h * 0.30),
+              Padding(
+                padding: const EdgeInsets.only(left: 50, right: 50),
+                child: appButtonLogOut(context, true, () {}),
+              ),
+            ]),
           ),
         ),
       ),

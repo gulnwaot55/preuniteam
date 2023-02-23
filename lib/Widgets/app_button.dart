@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/Widgets/custom_dialog.dart';
+
+import '../Controllers/app_controller.dart';
 
 Container appButtonLogin(BuildContext context, bool isLogin, Function onTap) {
   return Container(
@@ -87,7 +90,9 @@ Container appButtonLogOut(
     ),
     child: ElevatedButton(
       onPressed: () {
-        onTap();
+        showDialog(context: context, builder: (BuildContext context)=> confirmDialogUpdate(title: "คุณต้องการออกจากระบบ?",onConfirm: (){
+          AppController.setlogOut();
+        }));
       },
       child: Text(
         isLogin ? "LogOut" : "Login",

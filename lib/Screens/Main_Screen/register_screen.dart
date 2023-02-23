@@ -133,10 +133,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           IconButton(
               onPressed: () {
-                // print("object");
-                openImage();
-                // .then((value) {
-                // });
+                openImage().then((value){
+                  setState(() {
+                    
+                  });
+                });
               },
               icon: FaIcon(
                 FontAwesomeIcons.camera,
