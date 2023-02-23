@@ -1,10 +1,21 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:netflix/Screens/Multi_Screen/header_screen.dart';
+import 'package:netflix/Services/Authen_Service/updateprofile_service.dart';
 import 'package:netflix/Utils/paddingUtil.dart';
 import 'package:netflix/Widgets/avatar_profile.dart';
 import '../../Widgets/app_button.dart';
+import '../Multi_Screen/navbar_screen.dart';
 
 class Screen5 extends StatefulWidget {
   const Screen5({super.key});
@@ -17,12 +28,16 @@ class _Screen5State extends State<Screen5> {
   String username = "";
   String imageProfile = "";
   String emailUser = "";
+  String imagepath = ""; //  for the path of my image
+  String base64String = ""; //  data in the form of String
 
   @override
   void initState() {
     readDataService();
     super.initState();
   }
+
+  final ImagePicker imagePicker = ImagePicker();
 
   readDataService() {
     String uidProfile = FirebaseAuth.instance.currentUser!.uid.toString();
@@ -64,6 +79,17 @@ class _Screen5State extends State<Screen5> {
                         color: Colors.blueAccent,
                       ),
                     ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      openImage();
+                    },
+                    child: Text("เปลี่ยนรูปโปรไฟล์"),
+                  ),
+                ],
+              ),
               paddingUtilHeight(h * 0.30),
               Padding(
                 padding: const EdgeInsets.only(left: 50, right: 50),
@@ -74,5 +100,54 @@ class _Screen5State extends State<Screen5> {
         ),
       ),
     );
+  }
+
+  openImage() async {
+    try {
+      var pickedFile = await imagePicker.pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        EasyLoading.show(status: "Uploading...");
+        imagepath = pickedFile.path;
+        print(
+            imagepath); // /data/user/0/com.example.imagedecoding/cache/image_picker4858479242096916017.png
+
+        // now convert it into a file and then numbers or bytes
+        File imagefile = File(imagepath);
+        // now converting into numbers
+
+        Uint8List imagebytes = await imagefile.readAsBytes();
+        print(imagebytes); // 38439849384
+
+        // now convert it into string
+        base64String =
+            base64.encode(imagebytes); // asdfjaklsdfjl//asdfasd348309
+        print(base64String);
+
+        Timer(Duration(milliseconds: 2000), () {
+          UpdateProfileService.register(base64String).then((value) {
+            setState(() {
+              Get.snackbar("Status", "Update Profile Success",
+                  overlayBlur: 2,
+                  colorText: Colors.white,
+                  backgroundColor: Colors.black.withOpacity(0.8),
+                  duration: Duration(milliseconds: 2000),
+                  icon: Icon(
+                    FontAwesomeIcons.check,
+                    color: Colors.greenAccent,
+                  ));
+              Get.offAll(() => BottomNavbarScreen());
+              EasyLoading.dismiss();
+            });
+          });
+        });
+        // now we can save it into database
+      } else {
+        print('No image is selected');
+        EasyLoading.dismiss();
+      }
+    } catch (e) {
+      print('Error : ${e}');
+      EasyLoading.dismiss();
+    }
   }
 }

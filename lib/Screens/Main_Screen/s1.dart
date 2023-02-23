@@ -12,8 +12,6 @@ class Screen1 extends StatefulWidget {
 }
 
 class _Screen1State extends State<Screen1> {
-
-
   List<String> docFeed = [];
 
   Future getDocFeed() async {
@@ -33,26 +31,34 @@ class _Screen1State extends State<Screen1> {
         body: Column(
           children: [
             headerScreen("Unicorn Team Feeds"),
-            Expanded(child: Padding(
-              padding: const EdgeInsets.only(bottom: 70),
-              child: FutureBuilder(
-                future: getDocFeed(),
-                builder: (context, snapshot) {
-                  return ListView.builder(
-                    itemCount: docFeed.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: ListTile(
-                          tileColor: Colors.grey.withOpacity(0.1),
-                          title: ReadFeedsService(docIdFeed: docFeed[index]),
-                        ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 70),
+                child: RefreshIndicator(
+                  color: Colors.white,
+                  backgroundColor: Colors.black.withOpacity(0.2),
+                  onRefresh: getDocFeed,
+                  child: FutureBuilder(
+                    future: getDocFeed(),
+                    builder: (context, snapshot) {
+                      return ListView.builder(
+                        itemCount: docFeed.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: ListTile(
+                              tileColor: Colors.grey.withOpacity(0.1),
+                              title:
+                                  ReadFeedsService(docIdFeed: docFeed[index]),
+                            ),
+                          );
+                        },
                       );
                     },
-                  );
-                },
+                  ),
+                ),
               ),
-            ),),
+            ),
           ],
         ),
       ),

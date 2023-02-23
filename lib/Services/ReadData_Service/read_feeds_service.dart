@@ -26,7 +26,6 @@ class _ReadFeedsServiceState extends State<ReadFeedsService> {
   }
 
   profileService() async {
-    String uidProfile = "";
     DocumentReference docDB =
         FirebaseFirestore.instance.collection("Users").doc(uidUpload);
     docDB.get().then((value) {
@@ -53,7 +52,7 @@ class _ReadFeedsServiceState extends State<ReadFeedsService> {
               paddingUtilHeight(h * 0.01),
               Row(
                 children: [
-                  // CircleAvatar(backgroundImage: MemoryImage(base64Decode()),),
+                  uidUpload != "" ?  CircleAvatar(backgroundImage: MemoryImage(base64Decode("")),) : CircleAvatar(),
                   paddingUtilWidth(w * 0.02),
                   Text(data["usernameUpload"]),
                 ],
